@@ -11,10 +11,12 @@ ek lifetime connection hai. 🎀
 Happy Raksha Bandhan! ❤️`;
 
 openBtn.onclick = () => {
+    if (bgMusic) {
+        bgMusic.play().catch(error => console.log("Audio play failed:", error));
+    }
     welcome.style.display = "none";
     main.classList.remove("hidden");
     typeText();
-    bgMusic.play();
 };
 
 function typeText() {
@@ -39,7 +41,8 @@ for (let i = 1; i <= 6; i++) {
 
 function show(i) {
     index = i;
-    slide.src = `images/${i}.jpg`;
+    // Photo path fixed here
+    slide.src = `${i}.jpg`;
     [...dots.children].forEach((d, n) => d.classList.toggle("active", n === i - 1));
 }
 
@@ -61,3 +64,4 @@ function petal() {
     setTimeout(() => p.remove(), 11000);
 }
 setInterval(petal, 500);
+
